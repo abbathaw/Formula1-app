@@ -103,7 +103,7 @@ interface RaceTable {
   Races: Race[];
 }
 
-interface Race {
+export interface Race {
   season: string;
   round: string;
   url: string;
@@ -135,22 +135,15 @@ interface MRDataRaceResults extends PaginatedResponse {
   RaceTable: {
     season: string;
     round: string;
-    Races: Race[];
+    Races: DetailedRace[];
   };
 }
 
-interface Race {
-  season: string;
-  round: string;
-  url: string;
-  raceName: string;
-  Circuit: Circuit;
-  date: string;
-  time: string;
+export interface DetailedRace extends Race {
   Results: RaceResult[];
 }
 
-interface RaceResult {
+export interface RaceResult {
   number: string;
   position: string;
   positionText: string;

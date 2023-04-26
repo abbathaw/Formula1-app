@@ -1,8 +1,6 @@
 import useSeasonStandings from '../hooks/useSeasonStandings.ts';
-import { useParams } from 'react-router-dom';
 
-const SeasonWinners = () => {
-  const { year } = useParams();
+const SeasonWinners = ({ year }: { year: string | undefined }) => {
   const { seasonStandings, isLoading, isError } = useSeasonStandings(year || '2005');
   if (isError) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
@@ -11,7 +9,7 @@ const SeasonWinners = () => {
     return Number(seasonStanding.position || Infinity) <= 3;
   });
   return (
-    <div>
+    <div className="season-standings">
       {driverStandings.map((driverData) => (
         <div key={driverData.Driver.driverId}>
           <div>

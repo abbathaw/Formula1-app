@@ -6,7 +6,7 @@ import { fetcher } from './api/fetcher.ts';
 import { localStorageProvider } from './utils/localStorageProvider.ts';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorPage from './components/ErrorPage.tsx';
-import SeasonWinners from './components/SeasonWinners.tsx';
+import SeasonContainer from './components/SeasonContainter.tsx';
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/season/:year',
-        element: <SeasonWinners />,
+        element: <SeasonContainer />,
       },
     ],
   },
