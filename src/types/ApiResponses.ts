@@ -57,13 +57,13 @@ interface StandingsTable {
   StandingsLists: StandingList[];
 }
 
-interface StandingList {
+export interface StandingList {
   season: string;
   round: string;
   DriverStandings: DriverStanding[];
 }
 
-interface DriverStanding {
+export interface DriverStanding {
   position: string;
   positionText: string;
   points: string;

@@ -1,7 +1,11 @@
+import { Link } from 'react-router-dom';
+
 const NavBar = () => {
   return (
     <nav>
-      <div>F1</div>
+      <div>
+        <Link to={'/'}>F1</Link>
+      </div>
     </nav>
   );
 };

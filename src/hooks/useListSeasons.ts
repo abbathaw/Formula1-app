@@ -5,8 +5,10 @@ import { BASE_URL, seasonListAPI } from '../api/endpoints.ts';
 function useSeason() {
   const { data, error, isLoading } = useSWR<F1SeasonsResponse>(`${BASE_URL}${seasonListAPI()}`);
 
+  const seasons = [...(data?.MRData.SeasonTable.Seasons || [])].reverse();
+
   return {
-    seasons: data?.MRData,
+    seasons: seasons,
     isLoading,
     isError: error,
   };

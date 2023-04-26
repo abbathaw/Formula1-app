@@ -9,7 +9,7 @@ const SeasonList = () => {
 
   return (
     <div>
-      {seasons?.SeasonTable.Seasons.map((year) => {
+      {seasons.map((year) => {
         return <YearCard key={year.season} year={year.season} />;
       })}
     </div>
