@@ -17,13 +17,7 @@ export interface F1DriverStandingsResponse {
   MRData: MRDataDriverStandings;
 }
 
-// Response interface for api/f1/{year}.json (list of all races in a season)
-
-export interface F1RacesResponse {
-  MRData: MRDataRaces;
-}
-
-// Response interface for api/f1/{year}/{round}/results.json (driver standings in a particular race in a specific season)
+// Response interface for api/f1/{year}/{round}/results.json (list of all races in a season plus driver standings in a particular race in a specific season)
 export interface F1RaceResultsResponse {
   MRData: MRDataRaceResults;
 }
@@ -91,16 +85,15 @@ interface Constructor {
 }
 
 /**
- * Season Races Information
+ * Individual Race Information
  */
 
-interface MRDataRaces extends PaginatedResponse {
-  RaceTable: RaceTable;
-}
-
-interface RaceTable {
-  season: string;
-  Races: Race[];
+interface MRDataRaceResults extends PaginatedResponse {
+  RaceTable: {
+    season: string;
+    round: string;
+    Races: Race[];
+  };
 }
 
 export interface Race {
@@ -111,6 +104,7 @@ export interface Race {
   Circuit: Circuit;
   date: string;
   time: string;
+  Results: RaceResult[];
 }
 
 interface Circuit {
@@ -125,22 +119,6 @@ interface Location {
   long: string;
   locality: string;
   country: string;
-}
-
-/**
- * Individual Race Information
- */
-
-interface MRDataRaceResults extends PaginatedResponse {
-  RaceTable: {
-    season: string;
-    round: string;
-    Races: DetailedRace[];
-  };
-}
-
-export interface DetailedRace extends Race {
-  Results: RaceResult[];
 }
 
 export interface RaceResult {

@@ -6,6 +6,10 @@ const RaceList = ({ year }: { year: string | undefined }) => {
   if (isError) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
 
+  if (raceList.length === 0) {
+    return <div className="season-races">No races found</div>;
+  }
+
   return (
     <div className="season-races">
       {raceList.map((race, index) => (

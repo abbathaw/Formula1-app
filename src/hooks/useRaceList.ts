@@ -1,12 +1,14 @@
-import { F1RacesResponse, Race } from '../types/ApiResponses.ts';
+import { Race, F1RaceResultsResponse } from '../types/ApiResponses.ts';
 import { BASE_URL, seasonRaceListAPI } from '../api/endpoints.ts';
-import { getKey, PAGE_SIZE } from '../api/paginationKey.ts';
+import { getKey } from '../api/paginationKey.ts';
 import useSWRInfinite from 'swr/infinite';
 import { useCallback, useEffect } from 'react';
 
 function useRaceList(year: string) {
-  const keyLoader = getKey(`${BASE_URL}${seasonRaceListAPI(year)}`);
-  const { data, error, isLoading, size, setSize } = useSWRInfinite<F1RacesResponse>(keyLoader, {
+  // The API here is paging the limit based on the number of results inside each races, so use an adjusted higher limit for less API calls
+  const modifiedPageLimit = 100;
+  const keyLoader = getKey(`${BASE_URL}${seasonRaceListAPI(year)}`, modifiedPageLimit);
+  const { data, error, isLoading, size, setSize } = useSWRInfinite<F1RaceResultsResponse>(keyLoader, {
     revalidateOnFocus: false,
     revalidateFirstPage: false,
     parallel: true,
@@ -14,7 +16,10 @@ function useRaceList(year: string) {
 
   const isLoadingInitialData = !error && !data;
   const isEmpty = data?.[0].MRData.RaceTable.Races.length === 0;
-  const isReachingEnd = isEmpty || (data && data[data.length - 1]?.MRData.RaceTable.Races.length < PAGE_SIZE);
+  const isReachingEnd =
+    isEmpty ||
+    (data &&
+      Number(data[data.length - 1]?.MRData.total) < modifiedPageLimit + Number(data[data.length - 1]?.MRData.offset));
   const isLoadingMore = isLoadingInitialData || (size > 0 && data && typeof data[size - 1] === 'undefined');
 
   const loadMoreItems = useCallback(() => {

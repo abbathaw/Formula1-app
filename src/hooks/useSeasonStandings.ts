@@ -36,7 +36,7 @@ function useSeasonStandings(year: string) {
 
   const seasonStandings = data
     ? data?.reduce((prev, curr) => {
-        prev = [...prev, ...(curr?.MRData.StandingsTable.StandingsLists[0].DriverStandings || [])];
+        prev = [...prev, ...(curr?.MRData.StandingsTable.StandingsLists?.[0]?.DriverStandings || [])];
         return prev;
       }, [] as DriverStanding[])
     : [];
