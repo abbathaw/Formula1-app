@@ -8,6 +8,7 @@ The application gets the data from this [API](http://ergast.com/mrd) `http://erg
 
 ## Demo
 
+Visit https://formula1-app.netlify.app/
 
 ## Screenshots
 
@@ -46,5 +47,7 @@ For this app, the SWR cache is persisted to localstorage and revalidation is dis
 - SEO and accessibility improvements
 - integration testing
 
-##### Logo attribute
-Formula 1 by Muhammad Atiq from <a href="https://thenounproject.com/browse/icons/term/formula-1/" target="_blank" title="Formula 1 Icons">Noun Project</a>
+
+-----
+##### Car Logo (in header) attribute 
+###### Formula 1 by Muhammad Atiq from <a href="https://thenounproject.com/browse/icons/term/formula-1/" target="_blank" title="Formula 1 Icons">Noun Project</a>
