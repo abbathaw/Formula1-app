@@ -6,7 +6,7 @@ import { fetcher } from './api/fetcher.ts';
 import { localStorageProvider } from './utils/localStorageProvider.ts';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorPage from './components/ErrorPage.tsx';
-import SeasonContainer from './components/SeasonContainter.tsx';
+import SeasonContainer from './components/SeasonContainer.tsx';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([

@@ -8,6 +8,5 @@ export function localStorageProvider() {
     localStorage.setItem('app-cache', appCache);
   });
 
-  // We still use the map for write & read for performance.
   return map;
 }

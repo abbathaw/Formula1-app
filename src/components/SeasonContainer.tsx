@@ -14,16 +14,22 @@ const SeasonContainer = () => {
       <Helmet>
         <title>{year}</title>
       </Helmet>
-      <div className="season-container">
+      <section className="season-container">
         <Link className="back-button" to={'/'}>
           <FontAwesomeIcon icon={faAngleLeft} /> Back
         </Link>
-        <h2>{year}</h2>
-        <h3>Champions</h3>
-        <SeasonWinners year={year} />
-        <h3>Race List and Winners</h3>
-        <RaceList year={year} />
-      </div>
+        <div>
+          <h2>{year}</h2>
+        </div>
+        <div className="container">
+          <h3>Champions</h3>
+          <SeasonWinners year={year} />
+        </div>
+        <div className="container">
+          <h3>Rounds and Winners</h3>
+          <RaceList year={year} />
+        </div>
+      </section>
     </WinnerContext>
   );
 };

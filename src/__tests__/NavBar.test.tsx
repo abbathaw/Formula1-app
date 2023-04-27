@@ -1,6 +1,7 @@
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import NavBar from '../components/NavBar';
 import { BrowserRouter } from 'react-router-dom';
+import { describe, expect } from 'vitest';
 
 describe('NavBar', () => {
   test('renders correctly', () => {

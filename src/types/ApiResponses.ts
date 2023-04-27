@@ -40,7 +40,7 @@ interface SeasonTable {
   Seasons: Season[];
 }
 
-interface Season {
+export interface Season {
   season: string;
   url: string;
 }

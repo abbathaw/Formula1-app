@@ -37,6 +37,11 @@ function useRaceList(year: string) {
     loadMoreItems();
   }, [loadMoreItems]);
 
+  /**
+   *   this complicated reduce function is due to the structure the API is returning the data
+   *   (the totalResults refer to a nested array of results, and not the outer results array.
+   *   I opted to reduce this to an object and group them by round number as I was getting duplicated object results between each paginated results array
+   */
   const raceList = data
     ? data?.reduce((prev, curr) => {
         curr?.MRData.RaceTable.Races.forEach((race) => {

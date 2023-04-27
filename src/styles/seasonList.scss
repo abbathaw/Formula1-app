@@ -1,5 +1,11 @@
 @import 'variables';
 
+.container {
+  margin: 1rem 0;
+  padding: 0.4rem 1rem;
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.2);
+}
+
 .season-list {
   display: flex;
   flex-wrap: wrap;
@@ -35,6 +41,13 @@
 }
 
 @media (max-width: $breakpoint-mobile) {
+
+  .container {
+    margin: 1rem 0;
+    padding: 0;
+    box-shadow: unset;
+  }
+
   .season-list {
     flex-direction: column;
     align-content: center;
