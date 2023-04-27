@@ -1,4 +1,4 @@
-import { Race, F1RaceResultsResponse } from '../types/ApiResponses.ts';
+import { F1RaceResultsResponse, Race, ReducedRaceResults } from '../types';
 import { BASE_URL, seasonRaceListAPI } from '../api/endpoints.ts';
 import { getKey } from '../api/paginationKey.ts';
 import useSWRInfinite from 'swr/infinite';
@@ -39,10 +39,25 @@ function useRaceList(year: string) {
 
   const raceList = data
     ? data?.reduce((prev, curr) => {
-        prev = [...prev, ...(curr?.MRData.RaceTable.Races || [])];
+        curr?.MRData.RaceTable.Races.forEach((race) => {
+          if (race.round) {
+            if (!prev[race.round]) {
+              prev[race.round] = {
+                race: {} as Omit<Race, 'Results'>,
+                results: [],
+              };
+            }
+            const raceObject = { ...race };
+            delete raceObject['Results'];
+            prev[race.round]['race'] = prev[race.round]
+              ? { ...prev[race.round]['race'], ...raceObject }
+              : { ...raceObject };
+            prev[race.round]['results'] = [...prev[race.round]['results'], ...(race.Results || [])];
+          }
+        });
         return prev;
-      }, [] as Race[])
-    : [];
+      }, {} as ReducedRaceResults)
+    : {};
 
   return {
     raceList,

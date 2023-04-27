@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { F1SeasonsResponse } from '../types/ApiResponses.ts';
+import { F1SeasonsResponse } from '../types';
 import { BASE_URL, seasonListAPI } from '../api/endpoints.ts';
 
 function useSeason() {

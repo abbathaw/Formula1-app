@@ -1,0 +1,73 @@
+@import 'variables';
+
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.1rem 0;
+}
+
+.nav-item h1 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  padding: 1rem 0;
+  font-family: 'Bruno Ace', cursive;
+}
+
+.nav-logo {
+  width: 7rem;
+  height: auto;
+  path {
+    fill: lighten($primary-color, 50%);
+  }
+}
+
+.nav-logo:hover {
+  cursor: pointer;
+}
+
+.nav-link {
+  color: lighten($primary-color, 50%);
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: lighten($primary-color, 15%);
+  text-decoration: none;
+}
+
+@keyframes move-left-and-return {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+    transform: translateX(20vw);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.car-logo-animate {
+  animation: move-left-and-return 2s linear;
+}
+
+
+@media (prefers-color-scheme: light) {
+  .nav-link {
+    color: $primary-color;
+  }
+  .nav-logo {
+    path {
+      fill: $primary-color;
+    }
+  }
+}

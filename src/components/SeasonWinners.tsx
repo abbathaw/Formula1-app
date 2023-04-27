@@ -1,6 +1,10 @@
 import useSeasonStandings from '../hooks/useSeasonStandings.ts';
 import { useContext, useEffect } from 'react';
 import { SeasonWinnerContext } from '../contexts/WinnerContext.tsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrophy } from '@fortawesome/free-solid-svg-icons';
+import ErrorLoading from './Error.tsx';
+import Loading from './Loading.tsx';
 
 const SeasonWinners = ({ year }: { year: string | undefined }) => {
   const { seasonStandings, isLoading, isError } = useSeasonStandings(year || '2005');
@@ -15,8 +19,14 @@ const SeasonWinners = ({ year }: { year: string | undefined }) => {
     if (topWinner) setWinnerId(topWinner);
   }, [setWinnerId, topWinner]);
 
-  if (isError) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (isError) return <ErrorLoading />;
+  if (isLoading) return <Loading />;
+
+  const color: { [key: string]: string } = {
+    '1': 'gold',
+    '2': 'silver',
+    '3': 'bronze',
+  };
 
   return (
     <div className="season-standings">
@@ -24,13 +34,12 @@ const SeasonWinners = ({ year }: { year: string | undefined }) => {
         driverStandings
           .filter((d) => d)
           .map((driverData) => (
-            <div key={driverData.Driver.driverId}>
-              <div>
+            <div key={driverData.Driver.driverId} className="champion-row">
+              <FontAwesomeIcon icon={faTrophy} color={color[driverData.position]} />
+              <div className="driver-name">
                 {driverData.Driver.givenName} {driverData.Driver.familyName}
               </div>
-              <div>
-                Position: {driverData.position} - Points: {driverData.points}
-              </div>
+              <span>{driverData.points} points</span>
             </div>
           ))}
     </div>

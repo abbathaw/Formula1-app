@@ -22,6 +22,13 @@ export interface F1RaceResultsResponse {
   MRData: MRDataRaceResults;
 }
 
+export interface ReducedRaceResults {
+  [round: string]: {
+    results: RaceResult[];
+    race: Omit<Race, 'Results'>;
+  };
+}
+
 /**
  * Season Information
  */
@@ -104,7 +111,7 @@ export interface Race {
   Circuit: Circuit;
   date: string;
   time: string;
-  Results: RaceResult[];
+  Results?: RaceResult[];
 }
 
 interface Circuit {

@@ -1,0 +1,70 @@
+@import 'variables';
+
+.season-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.year-card {
+  background-color: lighten($secondary-color, 10%);
+  border-radius: 4px;
+  padding: 1rem;
+  text-align: center;
+  width: 9rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.year-card-link {
+  color: $white-color;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.year-card:hover {
+  background-color: lighten($primary-color, 20%);
+}
+
+.year-card:hover .year-card-link {
+  color: $white-color;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .season-list {
+    flex-direction: column;
+    align-content: center;
+    gap: 1rem;
+
+  }
+  .year-card-link {
+    width: 100%;
+  }
+
+  .year-card {
+    width: 100%;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .year-card {
+    background-color: darken($white-color, 10%);
+  }
+
+  .year-card-link {
+    color: $secondary-color;
+  }
+
+  .year-card:hover {
+    background-color: rgba($primary-color, 0.5);
+  }
+
+  .year-card:hover .year-card-link {
+    color: $secondary-color;
+  }
+
+}

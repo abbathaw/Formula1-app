@@ -1,0 +1,128 @@
+@import 'variables';
+
+
+.season-container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.season-container h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 1rem 0;
+}
+.season-standings{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.champion-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
+  padding: 1rem;
+}
+
+.champion-row{
+  .driver-name > span {
+    font-weight: 400;
+  }
+}
+
+
+.race-card {
+  background-color: lighten($secondary-color, 10%);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.race-header {
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-column-gap: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.5rem;
+
+  img {
+    width: 1.5rem;
+    height: 0.8rem;
+  }
+}
+
+.race-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.driver-standings {
+  display: flex;
+  flex-direction: column;
+}
+
+.driver-row {
+  display: grid;
+  grid-template-columns: min-content 4fr 2fr 1fr;
+  grid-column-gap: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.1rem 0;
+  border-bottom: 1px solid rgba($white-color, 0.2);
+}
+
+.winner-row {
+  background-color: rgba($primary-color, 0.9);
+}
+
+.driver-name {
+  font-weight: 600;
+}
+
+.driver-points::before {
+  content: 'Pts: ';
+}
+
+.back-button {
+  text-decoration: none;
+  color: $white-color;
+  padding: 0.7rem;
+  border-radius: 1rem;
+}
+
+.back-button:hover {
+  color: lighten($primary-color, 15%);
+}
+
+@media (max-width: $breakpoint-mobile) {
+
+  .champion-row {
+    grid-template-columns: 0.2fr 1.5fr 0.8fr;
+  }
+
+  .driver-row {
+    grid-template-columns: min-content 2fr 2fr 1fr;
+  }
+}
+
+
+@media (prefers-color-scheme: light) {
+
+  .race-card {
+    background-color: darken($white-color, 10%);
+  }
+
+  .winner-row {
+    background-color: rgba($primary-color, 0.2);
+  }
+  .back-button {
+    color: $secondary-color;
+  }
+}

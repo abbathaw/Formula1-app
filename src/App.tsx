@@ -7,6 +7,7 @@ import { localStorageProvider } from './utils/localStorageProvider.ts';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorPage from './components/ErrorPage.tsx';
 import SeasonContainer from './components/SeasonContainter.tsx';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
@@ -28,21 +29,26 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <ErrorBoundary fallback={<div>Something went wrong</div>}>
-        <SWRConfig
-          value={{
-            fetcher: fetcher,
-            // persist cache to localstorage
-            provider: localStorageProvider,
-            // Data is static, so avoid revalidating since this is a free API
-            revalidateIfStale: false,
-            revalidateOnFocus: false,
-            revalidateOnReconnect: false,
-          }}
-        >
-          <RouterProvider router={router} />
-        </SWRConfig>
-      </ErrorBoundary>
+      <HelmetProvider>
+        <ErrorBoundary fallback={<div>Something went wrong</div>}>
+          <SWRConfig
+            value={{
+              fetcher: fetcher,
+              // persist cache to localstorage
+              provider: localStorageProvider,
+              // Data is static, so avoid revalidating since this is a free API
+              revalidateIfStale: false,
+              revalidateOnFocus: false,
+              revalidateOnReconnect: false,
+            }}
+          >
+            <Helmet titleTemplate="F1 - %s" defaultTitle="F1 - Seasons">
+              <title>Seasons</title>
+            </Helmet>
+            <RouterProvider router={router} />
+          </SWRConfig>
+        </ErrorBoundary>
+      </HelmetProvider>
     </>
   );
 }

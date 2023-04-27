@@ -6,9 +6,9 @@ interface YearCardProps {
 
 const YearCard = ({ year }: YearCardProps) => {
   return (
-    <div className="year-card">
-      <Link to={`/season/${year}`}>{year}</Link>
-    </div>
+    <Link className="year-card-link" to={`/season/${year}`}>
+      <div className="year-card">{year}</div>
+    </Link>
   );
 };
 

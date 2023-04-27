@@ -1,4 +1,4 @@
-import { F1DriverStandingsResponse, DriverStanding } from '../types/ApiResponses.ts';
+import { DriverStanding, F1DriverStandingsResponse } from '../types';
 import { BASE_URL, seasonStandingsAPI } from '../api/endpoints.ts';
 import { getKey, PAGE_SIZE } from '../api/paginationKey.ts';
 import useSWRInfinite from 'swr/infinite';

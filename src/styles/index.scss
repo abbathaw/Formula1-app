@@ -1,6 +1,9 @@
 
 @import 'variables';
 @import 'reset';
+@import "navBar";
+@import 'seasonList';
+@import 'raceList';
 
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -18,7 +21,20 @@ body {
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem 2rem;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: rotate 1s linear infinite;
 }
 
 
@@ -27,9 +43,4 @@ body {
     color: $secondary-color;
     background-color: $white-color;
   }
-}
-
-
-.winner-row{
-  background-color: wheat;
 }
