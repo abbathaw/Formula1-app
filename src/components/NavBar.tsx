@@ -12,6 +12,7 @@ const NavBar = () => {
         </div>
       </Link>
       <Logo
+        data-testid="nav-logo"
         className={`nav-logo${animateLogo ? ' car-logo-animate' : ''}`}
         onClick={() => {
           setAnimateLogo(true);
