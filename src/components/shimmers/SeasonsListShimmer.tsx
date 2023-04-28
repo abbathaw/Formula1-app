@@ -11,7 +11,7 @@ const SeasonListShimmer = () => {
 };
 
 function getYearsArray() {
-  const startYear = 2020;
+  const startYear = 2023;
   const endYear = 2005;
   const yearsArray = [];
 
