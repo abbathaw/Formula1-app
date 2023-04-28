@@ -1,13 +1,13 @@
 import useListSeasons from '../hooks/useListSeasons.ts';
 import YearCard from './YearCard.tsx';
 import ErrorLoading from './Error.tsx';
-import Loading from './Loading.tsx';
+import SeasonListShimmer from './shimmers/SeasonsListShimmer.tsx';
 
 const SeasonList = () => {
   const { seasons, isLoading, isError } = useListSeasons();
 
   if (isError) return <ErrorLoading />;
-  if (isLoading) return <Loading />;
+  if (isLoading) return <SeasonListShimmer />;
 
   return (
     <div className="season-list">

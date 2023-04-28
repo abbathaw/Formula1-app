@@ -1,0 +1,42 @@
+.shimmer {
+  background-image: linear-gradient(90deg, #2a2a2a 25%, #1a1a1a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-element {
+  width: 6rem;
+  height: 1rem;
+  border-radius: 4px;
+  @extend .shimmer;
+}
+
+.shimmer-header,
+.shimmer-subtitle,
+.shimmer-driver-row {
+  @extend .shimmer-element;
+}
+
+.shimmer-driver-row::before{
+  content: unset
+}
+
+.shimmer-subtitle{
+  width: 10rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .shimmer{
+    background-image: linear-gradient(90deg, #9e9e9e 25%, #e0e0e0 50%, #f0f0f0 75%);
+
+  }
+}

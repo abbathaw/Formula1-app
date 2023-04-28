@@ -4,7 +4,7 @@ import { SeasonWinnerContext } from '../contexts/WinnerContext.tsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import ErrorLoading from './Error.tsx';
-import Loading from './Loading.tsx';
+import SeasonsWinnerShimmer from './shimmers/SeasonsWinnerShimmer.tsx';
 
 const SeasonWinners = ({ year }: { year: string | undefined }) => {
   const { seasonStandings, isLoading, isError } = useSeasonStandings(year || '2005');
@@ -20,12 +20,12 @@ const SeasonWinners = ({ year }: { year: string | undefined }) => {
   }, [setWinnerId, topWinner]);
 
   if (isError) return <ErrorLoading />;
-  if (isLoading) return <Loading />;
+  if (isLoading) return <SeasonsWinnerShimmer />;
 
   const color: { [key: string]: string } = {
     '1': 'gold',
     '2': 'silver',
-    '3': 'bronze',
+    '3': '#cd7f32',
   };
 
   return (
